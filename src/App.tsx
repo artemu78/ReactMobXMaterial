@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useContext } from "react";
+import { observer } from "mobx-react-lite";
+import cn from "classnames";
+import { store } from "./store";
 
+import Header from "./components/Header";
+
+import styles from "./app.module.scss";
+
+const TimerContext = createContext(store);
 function App() {
+  const store = useContext(TimerContext);
+  console.log(store.theme, "store.theme");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={styles.wrapper}>
+      <header className={cn(styles.box, styles.header, styles[store.theme])}>
+        <Header />
       </header>
+      {store && store.isMenuVisible && (
+        <nav className={cn(styles.box, styles.sidebar, styles[store.theme])}>
+          Sidebar
+        </nav>
+      )}
+      <main className={cn(styles.box, styles.content, styles[store.theme])}>
+        Content
+      </main>
+      <footer className={cn(styles.box, styles.footer, styles[store.theme])}>
+        Footer
+      </footer>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
