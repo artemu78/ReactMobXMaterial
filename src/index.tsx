@@ -8,7 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   <React.StrictMode>
     <StoreContext.Provider value={store}>
-      <App store={store} />
+      <App />
     </StoreContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")

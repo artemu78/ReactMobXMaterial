@@ -13,6 +13,7 @@ import NightsStay from "@material-ui/icons/NightsStay";
 import WbSunnyOutlined from "@material-ui/icons/WbSunnyOutlined";
 
 import { theme } from "store/index";
+import { useStore } from "hooks/use-store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ButtonAppBar({ store }: any) {
+function ButtonAppBar() {
+  const store = useStore();
   const classes = useStyles();
 
   const toggleMenu = () => {

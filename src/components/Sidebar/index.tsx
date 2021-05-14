@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -8,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import PriorityHighIcon from "@material-ui/icons/PriorityHigh";
+import { useStore } from "hooks/use-store";
 
 import styles from "./Sidebar.module.scss";
 const useStyles = makeStyles({
@@ -16,8 +16,8 @@ const useStyles = makeStyles({
   },
 });
 
-const Sidebar = ({ store }: any) => {
-  // const store = useContext(StoreContext);
+const Sidebar = () => {
+  const store = useStore();
   const handleClick = (menuItem: string) => {
     store.setCurrentPage({ route: "/", title: menuItem });
   };
