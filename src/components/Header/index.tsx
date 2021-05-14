@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,7 +12,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import NightsStay from "@material-ui/icons/NightsStay";
 import WbSunnyOutlined from "@material-ui/icons/WbSunnyOutlined";
 
-import { store, theme } from "store/index";
+import { theme } from "store/index";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+function ButtonAppBar({ store }: any) {
   const classes = useStyles();
 
   const toggleMenu = () => {
@@ -45,6 +46,7 @@ export default function ButtonAppBar() {
         return;
     }
     store.setTheme(newTheme);
+    // store.setCurrentPage({ title: `kot ${newTheme}` });
   };
 
   return (
@@ -61,7 +63,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Lorem ipsum dolor
+            {store.currentPage.title}
           </Typography>
           <FormControlLabel
             control={
@@ -79,3 +81,5 @@ export default function ButtonAppBar() {
     </div>
   );
 }
+
+export default observer(ButtonAppBar);

@@ -1,24 +1,23 @@
-import { createContext, useContext } from "react";
+import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import cn from "classnames";
-import { store } from "./store";
+import { StoreContext } from "./store";
 
-import Header from "./components/Header";
+import Header from "components/Header";
+import Sidebar from "components/Sidebar";
 
 import styles from "./app.module.scss";
 
-const TimerContext = createContext(store);
-function App() {
-  const store = useContext(TimerContext);
-  console.log(store.theme, "store.theme");
+function App({ store }: any) {
+  // const store = useContext(StoreContext);
   return (
     <div className={styles.wrapper}>
       <header className={cn(styles.box, styles.header, styles[store.theme])}>
-        <Header />
+        <Header store={store} />
       </header>
       {store && store.isMenuVisible && (
         <nav className={cn(styles.box, styles.sidebar, styles[store.theme])}>
-          Sidebar
+          <Sidebar store={store} />
         </nav>
       )}
       <main className={cn(styles.box, styles.content, styles[store.theme])}>

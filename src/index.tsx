@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { store } from "./store/index";
+import { StoreContext, store } from "./store/index";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const StoreContext = React.createContext(store);
 ReactDOM.render(
   <React.StrictMode>
     <StoreContext.Provider value={store}>
-      <App />
+      <App store={store} />
     </StoreContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")
