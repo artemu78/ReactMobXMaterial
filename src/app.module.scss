@@ -44,8 +44,9 @@
 .box {
   padding: 50px;
   font-size: 150%;
-  border: 1px solid grey;
-  box-sizing: border-box;
+  &_Sidebar {
+    padding: 50px 0px;
+  }
 }
 
 .dark {
@@ -54,6 +55,6 @@
 }
 
 .light {
-  background-color: #ddd;
+  background-color: #eee;
   color: #444;
 }

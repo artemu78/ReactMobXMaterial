@@ -3,6 +3,7 @@ import cn from "classnames";
 
 import Header from "components/Header";
 import Sidebar from "components/Sidebar";
+import Content from "components/Content";
 import { useStore } from "hooks/use-store";
 
 import styles from "./app.module.scss";
@@ -15,12 +16,18 @@ function App() {
         <Header />
       </header>
       {store && store.isMenuVisible && (
-        <nav className={cn(styles.box, styles.sidebar, styles[store.theme])}>
+        <nav
+          className={cn(
+            styles.box_Sidebar,
+            styles.sidebar,
+            styles[store.theme]
+          )}
+        >
           <Sidebar />
         </nav>
       )}
       <main className={cn(styles.box, styles.content, styles[store.theme])}>
-        Content
+        <Content />
       </main>
       <footer className={cn(styles.box, styles.footer, styles[store.theme])}>
         Footer

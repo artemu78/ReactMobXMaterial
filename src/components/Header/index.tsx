@@ -65,7 +65,7 @@ function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {store.currentPage.title}
+            Lorem ipsum dolor
           </Typography>
           <FormControlLabel
             control={
